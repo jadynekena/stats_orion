@@ -13,7 +13,7 @@
 		span{display: contents;}
 		strong{font-size: max(25px,2vw);color: #0a0ac4;}
 		i{color: #adadad;font-size: 10px;display: block;}
-		select{text-align: center;border-style: none;background: #d9d9ff;border-radius: 5px;font-size: inherit;}
+		select{text-align: center;border-style: none;background: inherit;border-radius: 5px;font-size: inherit;color: inherit;font-weight: bold;}
 		.cards{display: flex;flex-wrap: wrap;}
 		.card{margin: 5px;padding: 20px;border-radius: 5px;border-width: 0;border-style: outset;flex: 1;background: #ebebff;text-align: center;justify-content: center;display: grid;align-content: center;}
 	</style>
@@ -34,19 +34,19 @@
 	</p>
 
 	<p>
-		<h1>Utilisations
-			<i>Chaque visite sur l'outil est monitorée, en décuplant les visites récurrentes d'un même utilisateur.</i>
+		<h1>Utilisations sur le mois de
+						<select id="periode" onchange="refresh_all()">
+							<option value="2023-07">juillet 2023</option>
+							<option value="2023-06">juin 2023</option>
+							<option value="2023-05">mai 2023</option>
+						</select>
+			<i>L'observation sur cette période s'est faite sur <span id="nb_jours">N</span> jours. Chaque visite sur l'outil est monitorée, en décuplant les visites récurrentes d'un même utilisateur.</i>
 		</h1>
 		<p>
 			<div class="cards">
 				
 				<div class="card">
-					<strong><span id="nb_visites"></span> visites</strong> ont été recensés sur le mois de
-						<select id="periode" onchange="refresh_all()">
-							<option value="2023-07">juillet 2023</option>
-							<option value="2023-06">juin 2023</option>
-							<option value="2023-05">mai 2023</option>
-						</select> avec une observation sur <span id="nb_jours">N</span> jours.
+					<strong><span id="nb_visites"></span> visites</strong> ont été recensés						
 				</div>
 
 
