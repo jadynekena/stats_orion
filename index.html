@@ -9,7 +9,7 @@
 		body{margin: 0 min(400px, 10vw);}
 		iframe{/*width: 90vw;*/height: 110vh;width:100%;}
 		h1{background: #000091;  color: white; padding: 10px; margin: 0;}
-		a{color:#000091;}
+		a{color: #000091;text-decoration: none;font-weight: bold;}
 		span{display: contents;}
 		strong{font-size: max(25px,2vw);color: /*#0a0ac4*/#4c5773;}
 		i{color: #adadad;font-size: 10px;display: block;}
@@ -22,7 +22,7 @@
 
 <body>
 	<p>
-		<a href="https://orion.beta.gouv.fr">Orion</a> est un outil de pilotage qui permet aux acteurs de la voie professionnelle d'avoir une vision globale des formations, afin de mieux orienter leurs décisions sur la transformation de la carte.
+		<a href="https://orion.inserjeunes.beta.gouv.fr" target="_blank">Orion</a> est un outil de pilotage qui permet aux acteurs de la voie professionnelle d'avoir une vision globale des formations, afin de mieux orienter leurs décisions sur la transformation de la carte.
 	</p>
 	<p>
 		<h1>Chiffres globaux
@@ -40,29 +40,32 @@
 							<option value="2023-06">juin 2023</option>
 							<option value="2023-05">mai 2023</option>
 						</select>
-			<i>L'observation sur cette période s'est faite sur <span id="nb_jours">N</span> jours. Chaque visite sur l'outil est monitorée, en décuplant les visites récurrentes d'un même utilisateur.</i>
+			<i>L'observation sur cette période s'est faite sur <span id="nb_jours">N</span> jours. Les visites et les actions (filtres, tris, export) sont monitorées, en décuplant les données d'un même utilisateur.</i>
 		</h1>
 		<p>
 			<div class="cards">
+				<div class="card">
+					<strong><span id="nb_visites"></span> visites</strong> ont été recensées
+				</div>
+
+				<div class="card">
+					<strong><span id="nb_users"></span> utilisateurs uniques</strong> ont été identifiés
+				</div>
+
+				<div class="card">
+					<strong><span id="100_moins_bounce_rate"></span>% </strong>des visiteurs sont <strong>actifs</strong> ils naviguent réellement sur l'interface</span>
+				</div>
 				
 				<div class="card">
-					<strong><span id="nb_visites"></span> visites</strong> ont été recensés.			
+					<strong><span id="nb_pages"></span> pages par visiteur actif</strong> sont consultées en moyenne	
 				</div>
 
 				<div class="card">
-					<strong><span id="nb_users"></span> utilisateurs uniques</strong> ont été identifiés.
+					<strong><span id="duree_moyenne"></span> minutes</strong><span>est la durée moyenne de visite par utilisateur</span>
 				</div>
 
 				<div class="card">
-					<strong><span id="duree_moyenne"></span> minutes</strong><span>c'est la durée moyenne d'utilisation par utilisateur.</span>
-				</div>
-
-				<div class="card">
-					<strong><span id="100_moins_bounce_rate"></span>%</strong> des visiteurs naviguent réellement sur les différentes interfaces pendant leur visite.</span>
-				</div>
-
-				<div class="card">
-					<strong>Cité <span id="nb_sources"></span> fois</strong> la plateforme reçoit des visiteurs issus de différentes sources, hors moteurs de recherches.
+					<strong>Citée <span id="nb_sources"></span> fois</strong> la plateforme reçoit des visiteurs issus de différentes sources, hors moteurs de recherche
 				</div>
 
 				<div class="card">
@@ -71,14 +74,26 @@
 
 
 				<div class="card">
-					<strong id="region_top"></strong> est la région source majoritaire.<br/>
+					<strong id="region_top"></strong> est la région source majoritaire<br/>
 					(~ <span id="part_region_top">X</span>% des visiteurs)
 				</div>
 
 
 				<div class="card">
-					<strong id="ville_top"></strong> est la ville source majoritaire.<br/>
+					<strong id="ville_top"></strong> est la ville source majoritaire<br/>
 					(~ <span id="part_ville_top">X</span>% des visiteurs)
+				</div>
+
+				<div class="card">
+					<strong><span id="part_filtres"></span>% des utilisateurs filtrent</strong> les vues pour se focaliser sur des formations précises
+				</div>
+
+				<div class="card">
+					<strong><span id="part_tris"></span>% des utilisateurs réarrangent</strong> les données pour prioriser certains indicateurs plus que d'autres
+				</div>
+
+				<div class="card">
+					<strong><span id="part_export"></span>% des utilisateurs exportent</strong> les données brutes pour les exploiter dans d'autres outils et les comparer à d'autres sources
 				</div>
 			</div>	
 
@@ -93,15 +108,43 @@
 
 	<p>
 		<h1>Qualité des données
-			<i>Pour que l'outil soit utilisable, les données exploitées sur l'outil sont fiabilisées avant d'être mises à disposition.</i>
+			<i>Pour que l'outil soit utilisable, les données sont fiabilisées avant d'être mises à disposition.</i>
 		</h1>
-		<p>(todo)</p>
+		<p>
+			<div class="cards">
+				<div class="card">
+					<strong><span id="nb_sources_donnees"><a href="https://mission-apprentissage.notion.site/2626b7528ace4ff4ab7e1c9049cacb38?v=2b15f700938a4c74b7ea9f4f2b496e97&pvs=4" target="_blank">23</a></span> sources de données</strong> issues de différents systèmes d'informations, majoritairement en Open Data, ont été nettoyées puis mutualisées dans une même interface
+				</div>		
+
+				<div class="card">
+					<strong>5 indicateurs de performance</strong> sont actuellement affichés pour chaque formation
+				</div>
+
+				
+				<iframe src="https://orion.inserjeunes.beta.gouv.fr/metabase/public/dashboard/4adb5346-062b-4ead-9544-a8c76221e6f3?#titled=false"
+					frameborder="0"
+				    allowtransparency
+				    scrolling="no" ></iframe>
+
+
+				<div class="card">
+					<span>(todo les autres éléments à intégrer ici)</span>
+				</div>
+
+			</div>
+		</p>
 
 	</p>
 
 	<p>
-		<h1>Utilité</h1>
-		<p>(todo)</p>
+		<h1>Evaluation par les utilisateurs
+			<i>La mesure d'impact de l'outil est au centre de nos préoccupations.</i>
+		</h1>
+		<p>	
+			<div class="card">
+				<span>(todo les autres éléments à intégrer ici)</span>
+			</div>
+		</p>
 	</p>
 
 	<script type="text/javascript">
@@ -109,12 +152,16 @@
 		function refresh_all(){
 			refresh_nb_visites()
 			refresh_nb_users()
+			refresh_100_moins_bounce_rate()
+			refresh_nb_pages()
 			refresh_nb_jours()
 			refresh_duree_moyenne()
-			refresh_100_moins_bounce_rate()
 			refresh_nb_sources()
 			refresh_nb_regions_et_nb_villes()
 			refresh_region_ville_top()
+			refresh_part_filtres()
+			refresh_part_tris()
+			refresh_part_export()
 		}
 
 		function refresh_nb_visites(){
@@ -127,9 +174,25 @@
 
 		function refresh_nb_users(){
 			const periode = document.getElementById('periode').value
-			document.getElementById('nb_users').innerText = periode === '2023-07' ? 1314 :
+			document.getElementById('nb_users').innerText = periode === '2023-07' ? 1317 :
 															periode === '2023-06' ? 234 :
 															periode === '2023-05' ? 11 : 0
+		}
+
+		function refresh_100_moins_bounce_rate(){
+			const periode = document.getElementById('periode').value
+			document.getElementById('100_moins_bounce_rate').innerText = periode === '2023-07' ? 63 :
+															periode === '2023-06' ? 70 :
+															periode === '2023-05' ? 95 : 0
+
+		}
+
+		function refresh_nb_pages(){
+			const periode = document.getElementById('periode').value
+			document.getElementById('nb_pages').innerText = periode === '2023-07' ? (6458/((63/100)*1317)).toFixed(0) :
+															periode === '2023-06' ? (1597/((70/100)*234)).toFixed(0) :
+															periode === '2023-05' ? (52/((95/100)*11)).toFixed(0) : 0
+
 		}
 
 		function refresh_nb_jours(){
@@ -145,14 +208,6 @@
 			document.getElementById('duree_moyenne').innerText = periode === '2023-07' ? 4 :
 															periode === '2023-06' ? 8 :
 															periode === '2023-05' ? 15 : 0
-
-		}
-
-		function refresh_100_moins_bounce_rate(){
-			const periode = document.getElementById('periode').value
-			document.getElementById('100_moins_bounce_rate').innerText = periode === '2023-07' ? 63 :
-															periode === '2023-06' ? 70 :
-															periode === '2023-05' ? 95 : 0
 
 		}
 
@@ -195,6 +250,32 @@
 															periode === '2023-06' ? 20 :
 															periode === '2023-05' ? 'NA' : 0
 															
+		}
+
+		function refresh_part_filtres(){
+			const periode = document.getElementById('periode').value
+			document.getElementById('part_filtres').innerText = periode === '2023-07' ? 26 :
+															periode === '2023-06' ? 34 :
+															periode === '2023-05' ? 82 : 0
+
+		}
+
+
+		function refresh_part_tris(){
+			const periode = document.getElementById('periode').value
+			document.getElementById('part_tris').innerText = periode === '2023-07' ? 3 :
+															periode === '2023-06' ? 8 :
+															periode === '2023-05' ? 36 : 0
+
+			
+		}
+
+		function refresh_part_export(){
+			const periode = document.getElementById('periode').value
+			document.getElementById('part_export').innerText = periode === '2023-07' ? 3 :
+															periode === '2023-06' ? 1 :
+															periode === '2023-05' ? 32 : 0
+
 		}
 
 		refresh_all()
