@@ -15,8 +15,7 @@
 		i{color: #adadad;font-size: 10px;display: block;}
 		select{text-align: center;border-style: none;background: inherit;border-radius: 5px;font-size: inherit;color: inherit;font-weight: bold;}
 		.cards{display: flex;flex-wrap: wrap;}
-		.card{margin: 5px;padding: 20px;border-width: 0;border-style: outset;flex: 1;background: #ebebff;text-align: center;justify-content: center;display: grid;align-content: center;
-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-radius: 8px;}
+		.card{margin: 5px;padding: 20px;border-width: 0;border-style: outset;flex: 1;background: #ebebff;text-align: center;justify-content: center;display: grid;align-content: center;box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-radius: 8px;min-width: 200px;}
 	</style>
 	<link rel="shortcut icon" type="image/ico" href="https://communaute.inclusion.beta.gouv.fr/static/vendor/theme-inclusion/images/favicon.ico">
 </head>
@@ -27,7 +26,7 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-rad
 	</p>
 	<p>
 		<h1>Chiffres globaux
-		<i>Ces chiffres représentent uniquement la rentrée scolaire 2022. En l'état, 3 rentrées scolaires consécutives sont actuellement disponibles.</i> </h1>
+		<i>Ces chiffres représentent uniquement la rentrée scolaire 2022. A terme, 3 rentrées scolaires consécutives seront intégrées.</i> </h1>
 		<iframe src="https://orion.inserjeunes.beta.gouv.fr/metabase/public/dashboard/88f3d79e-9fed-4340-a411-ebd45419f196?#titled=false"
 				frameborder="0"
 			    allowtransparency
@@ -55,7 +54,7 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-rad
 				</div>
 
 				<div class="card">
-					<strong><span id="duree_moyenne"></span> minutes</strong><span>c'est la durée moyenne d'utilisation sur cette même période.</span>
+					<strong><span id="duree_moyenne"></span> minutes</strong><span>c'est la durée moyenne d'utilisation par utilisateur.</span>
 				</div>
 
 				<div class="card">
@@ -63,19 +62,24 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-rad
 				</div>
 
 				<div class="card">
-					<strong>Cité <span id="nb_sources"></span> fois</strong> sur différentes plateformes, hors moteurs de recherches.
+					<strong>Cité <span id="nb_sources"></span> fois</strong> la plateforme reçoit des visiteurs issus de différentes sources, hors moteurs de recherches.
 				</div>
 
 				<div class="card">
-					Les visiteurs localisés en France sont issus de <strong><span id="nb_regions"></span> régions</strong>
+					Les visiteurs localisés en France sont issus de <strong><span id="nb_regions"></span> régions</strong> regroupant en tout <strong><span id="nb_villes"></span> villes</strong>
 				</div>
 
 
 				<div class="card">
 					<strong id="region_top"></strong> est la région source majoritaire.<br/>
-					(+ de <span id="part_region_top">X</span>% des visiteurs)
+					(~ <span id="part_region_top">X</span>% des visiteurs)
 				</div>
 
+
+				<div class="card">
+					<strong id="ville_top"></strong> est la ville source majoritaire.<br/>
+					(~ <span id="part_ville_top">X</span>% des visiteurs)
+				</div>
 			</div>	
 
 		</p>
@@ -88,7 +92,9 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-rad
 	</p>
 
 	<p>
-		<h1>Utilisabilité</h1>
+		<h1>Qualité des données
+			<i>Pour que l'outil soit utilisiable, les données exploitées sur l'outil sont fiabilisées avant d'être mises à disposition.</i>
+		</h1>
 		<p>(todo)</p>
 
 	</p>
@@ -107,8 +113,8 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-rad
 			refresh_duree_moyenne()
 			refresh_100_moins_bounce_rate()
 			refresh_nb_sources()
-			refresh_nb_regions()
-			refresh_region_top()
+			refresh_nb_regions_et_nb_villes()
+			refresh_region_ville_top()
 		}
 
 		function refresh_nb_visites(){
@@ -158,24 +164,35 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.13);border-color: transparent;border-rad
 
 		}
 
-		function refresh_nb_regions(){
+		function refresh_nb_regions_et_nb_villes(){
 			const periode = document.getElementById('periode').value
 			document.getElementById('nb_regions').innerText = periode === '2023-07' ? 13 :
 															periode === '2023-06' ? 11 :
 															periode === '2023-05' ? 'trop peu de' : 0
 
+			document.getElementById('nb_villes').innerText = periode === '2023-07' ? 100 :
+															periode === '2023-06' ? 78 :
+															periode === '2023-05' ? 'trop peu de' : 0
 			
 		}
 
-		function refresh_region_top(){
+		function refresh_region_ville_top(){
 			const periode = document.getElementById('periode').value
 			document.getElementById('region_top').innerText = periode === '2023-07' ? 'Île-de-France' :
 															periode === '2023-06' ? 'Île-de-France' :
-															periode === '2023-05' ? 'Aucune' : 0
+															periode === '2023-05' ? 'Aucune' : 'Aucune'
 
+			document.getElementById('ville_top').innerText = periode === '2023-07' ? 'Paris' :
+															periode === '2023-06' ? 'Paris' :
+															periode === '2023-05' ? 'Aucune' : 'Aucune'
 
 			document.getElementById('part_region_top').innerText = periode === '2023-07' ? 26 :
 															periode === '2023-06' ? 36 :
+															periode === '2023-05' ? 'NA' : 0
+
+
+			document.getElementById('part_ville_top').innerText = periode === '2023-07' ? 19 :
+															periode === '2023-06' ? 20 :
 															periode === '2023-05' ? 'NA' : 0
 															
 		}
